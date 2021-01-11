@@ -11,12 +11,12 @@
         <!-- 用户账号 -->
         <el-form-item prop="name">
           <b style="padding-left:3px;font-size:18px">Username</b>
-          <el-input v-model="form.name" placeholder="请输入用户名"></el-input>
+          <el-input type="text" v-model="form.name" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <!-- 用户密码 -->
         <el-form-item prop="password">
           <b style="padding-left:3px;font-size:18px">Password</b>
-          <el-input v-model="form.password" placeholder="请输入密码"></el-input>
+          <el-input type="password" v-model="form.password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <!-- 提交表单 -->
         <el-form-item>

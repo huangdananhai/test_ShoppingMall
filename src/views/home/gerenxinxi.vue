@@ -11,30 +11,19 @@
         label-width="80px"
         :model="formLabelAlign"
       >
-        <el-form-item label="名称">
+        <el-form-item label="账户">
           <el-input v-model="formLabelAlign.name"></el-input>
         </el-form-item>
-        <el-form-item label="活动区域">
+        <el-form-item label="密码">
           <el-input v-model="formLabelAlign.region"></el-input>
         </el-form-item>
-        <el-form-item label="活动形式">
+        <el-form-item label="修改密码">
           <el-input v-model="formLabelAlign.type"></el-input>
         </el-form-item>
       </el-form>
       </div>
     </el-card>
-          <el-upload
-  class="upload-demo"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :on-preview="handlePreview"
-  :on-remove="handleRemove"
-  :before-remove="beforeRemove"
-  multiple
-  :limit="3"
-  :on-exceed="handleExceed"
-  :file-list="fileList">
-  <el-button size="small" type="primary">点击上传</el-button>
-</el-upload>
+
   </div>
 </template>
 
@@ -76,5 +65,6 @@ export default {
 }
 .left{
   float: left;
+  margin-left: 50px;
 }
 </style>
