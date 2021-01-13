@@ -5,6 +5,9 @@
     </mianbaoxie>
     <el-card class="header_card" shadow="always">
       <img src="../../assets/img/header.jpg" alt />
+      <span class="uploadp">
+        <el-button size="small" type="primary">修改头像</el-button>
+      </span>
       <div class="left">
         <el-form
           :label-position="labelPosition"
@@ -12,7 +15,7 @@
           :model="ruleForm"
           ref="ruleForm"
         >
-          <el-form-item label="账户" prop="name">
+          <el-form-item label="账户" prop="name" style="width:700px">
             <el-input v-model="ruleForm.name"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="region">
@@ -66,12 +69,11 @@ export default {
   float: left;
   margin-top: 20px;
 }
-.header_card_a {
-  height: 350px;
-  width: 35%;
+.header_card .uploadp{
   float: left;
-  margin-top: -21px;
-  margin-left: -20px;
+  position: absolute;
+  margin-top: 208px;
+  margin-left: -130px;
 }
 .header_card img {
   width: 170px;
