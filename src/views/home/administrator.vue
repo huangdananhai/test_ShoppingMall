@@ -30,21 +30,44 @@
       style="width: 100%"
       @selection-change="handleSelectionChange"
     >
-      <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column width="80">编号</el-table-column>
-      <el-table-column label="日期" width="120">
-        <template slot-scope="scope">{{ scope.row.date }}</template>
-      </el-table-column>
-      <el-table-column prop="name" label="姓名" width="120"> </el-table-column>
-      <el-table-column prop="address" label="地址" show-overflow-tooltip>
+      <el-table-column>
+        <el-table-column type="selection" width="55"></el-table-column>
+        <el-table-column label="编号" width="120">1</el-table-column>
+        <el-table-column label="日期" width="120">
+          <template slot-scope="scope">{{ scope.row.date }}</template>
+        </el-table-column>
+        <el-table-column prop="name" label="品牌名称" width="120">
+        </el-table-column>
+        <el-table-column
+          prop="address"
+          label="品牌首字母"
+          show-overflow-tooltip
+        ></el-table-column>
+        <el-table-column
+          prop=""
+          label="排序"
+          show-overflow-tooltip
+        >
+        <span>12</span>
+        </el-table-column>
+        <el-table-column prop="" label="制造商是否显示" show-overflow-tooltip>
+          <el-switch v-model="value" style="display: block"></el-switch>
+        </el-table-column>
+        <el-table-column prop="" label="操作" show-overflow-tooltip>
+          <template slot-scope="scope">
+            <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
+              >编辑</el-button
+            >
+            <el-button
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.$index, scope.row)"
+              >删除</el-button
+            >
+          </template>
+        </el-table-column>
       </el-table-column>
     </el-table>
-    <div style="margin-top: 20px">
-      <el-button @click="toggleSelection([tableData[1], tableData[2]])"
-        >切换第二、第三行的选中状态</el-button
-      >
-      <el-button @click="toggleSelection()">取消选择</el-button>
-    </div>
   </div>
 </template>
 
@@ -93,6 +116,7 @@ export default {
         },
       ],
       multipleSelection: [],
+      value: true,
     };
   },
   methods: {
