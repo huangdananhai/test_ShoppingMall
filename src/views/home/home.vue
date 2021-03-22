@@ -298,7 +298,7 @@ export default {
 				}).then(()=>{
 					var params = new URLSearchParams()
 					params.append("id", row.id)
-					this.$axios.delete('/fromname', params).then((response) => {
+					this.$axios.post('/fromname', params).then((response) => {
 						console.log("删除的结果：", response)
 						if (response.data.code == 0) {
 							alert(response.data.message)

@@ -132,6 +132,26 @@ export default {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
+    handleDelete(index,row){
+      this.$confirm("永久删除该文件, 是否继续?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning"
+        }).then(() => {
+            // 移除对应索引位置的数据，可以对row进行设置向后台请求删除数据
+            this.tableData.splice(index, 1);
+            this.$message({
+              type: "success",
+              message: "删除成功!"
+            });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消删除"
+            });
+          });
+    }
   },
 };
 </script>
