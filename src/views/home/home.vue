@@ -140,8 +140,8 @@
         </div>
       </el-dialog>
       <div class="table-responsive" style="height: 400px">
-        <!--
-        <table
+        
+        <!-- <table
           class="table table-striped"
           style="color: #909399"
           :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
@@ -166,16 +166,17 @@
               </td>
             </tr>
           </tbody>
-        </table>
-        -->
-        <template>
+        </table> -->
+       
+        <template >
         <el-table :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)" style="width: 100%">
+          <template slot-scope="scope">
           <el-table-column prop="id" label="ID" width="100" ></el-table-column>
           <el-table-column prop="date" label="日期" width="160">{{tableData.data | test("YYYY-MM-DD")}}</el-table-column>
           <el-table-column prop="name" label="姓名" width="160"></el-table-column>
           <el-table-column prop="address" label="事项" width="180"></el-table-column>
-          <el-table-column prop="delete" label="操作"  width="100"> <a @click="delItem(tableData.id)">删除</a></el-table-column>
-          <!-- bug---删除失败，路径不对 -->
+          <el-table-column prop="delete" label="操作"  width="100"> <a @click="delItem(scope.$index,tableData)">删除</a></el-table-column>
+          </template>
         </el-table>
         </template>
         <el-pagination
@@ -265,12 +266,50 @@ export default {
         alert("内容不能为空");
       }
     },
-    delItem(id) {
-      if (confirm("确认删除数据?")) {
-        this.$axios.delete(`/fromname/${id}`).then((red) => {
-          red.status === 200 && this.matterdata();
-        });
-      }
+    delItem(index,row) {
+      // if (confirm("确认删除数据?")) {
+      //   this.$axios.delete(`fromname/${id}`).then((res) => {
+      //     res.status === 200 && this.matterdata();
+      //   });
+      // }
+      // this.$confirm("永久删除该文件, 是否继续?", "提示", {
+      //     confirmButtonText: "确定",
+      //     cancelButtonText: "取消",
+      //     type: "warning"
+      //   })
+      //     .then(() => {
+      //       // 移除对应索引位置的数据，可以对row进行设置向后台请求删除数据
+      //       this.tableData.splice(index, 1);
+      //       this.$message({
+      //         type: "success",
+      //         message: "删除成功!"
+      //       });
+      //     })
+      //     .catch(() => {
+      //       this.$message({
+      //         type: "info",
+      //         message: "已取消删除"
+      //       });
+      //     });
+      //###########################################################
+      console.log("商品编号：", row.id)
+				this.$confirm('确定删除该商品数据?','提示',{
+					type:'warning'
+				}).then(()=>{
+					var params = new URLSearchParams()
+					params.append("id", row.id)
+					this.$axios.delete('/fromname', params).then((response) => {
+						console.log("删除的结果：", response)
+						if (response.data.code == 0) {
+							alert(response.data.message)
+							this.shopGoods.splice(index, 1)
+						} else {
+							alert("删除失败的原因：" + response.data.message)
+						}
+					}).catch((error) => {
+						console.log("删除失败的原因：", error)
+					})
+				})
     },
 
     // 每页显示数据变更
