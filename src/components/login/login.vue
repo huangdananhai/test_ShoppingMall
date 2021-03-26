@@ -32,8 +32,8 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        password: ""
+        name: "123",
+        password: "123123"
       },
       loginRules: {
         // 验证规则

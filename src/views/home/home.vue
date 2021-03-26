@@ -358,7 +358,7 @@ export default {
   padding-top: 30px;
 }
 .card_name {
-  width: 20%;
+  width: 21%;
   height: 100px;
   float: left;
   margin-left: 23.5px;
@@ -391,7 +391,7 @@ export default {
 }
 .el-card-inner {
   float: right;
-  width: 64%;
+  width: 67%;
   height: 471px;
   margin: -471px 0 0 0;
   margin-right: 0px;

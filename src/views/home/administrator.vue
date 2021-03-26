@@ -10,13 +10,14 @@
         <el-form
           ref="form"
           :model="form"
-          label-width="80px"
-          style="width: 30%; margin-left: 80px"
+          :inline="true"
+          size="small"
+          label-width="140px"
         >
-          <el-form-item label="活动名称">
+          <el-form-item label="输入搜索：">
             <el-input
-              v-model="form.name"
-              placeholder="请输入搜索内容"
+              style="width: 203px"
+              placeholder="商品名称"
             ></el-input>
           </el-form-item>
         </el-form>
@@ -51,7 +52,7 @@
         <span>12</span>
         </el-table-column>
         <el-table-column prop="" label="制造商是否显示" show-overflow-tooltip>
-          <el-switch v-model="value" style="display: block"></el-switch>
+          <el-switch v-model="value" ></el-switch>
         </el-table-column>
         <el-table-column prop="" label="操作" show-overflow-tooltip>
           <template slot-scope="scope">
@@ -115,6 +116,7 @@ export default {
           address: "上海市普陀区金沙江路 1518 弄",
         },
       ],
+      formname:{},
       multipleSelection: [],
       value: true,
     };
@@ -132,6 +134,7 @@ export default {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
+    //删除
     handleDelete(index,row){
       this.$confirm("永久删除该文件, 是否继续?", "提示", {
           confirmButtonText: "确定",
@@ -151,6 +154,10 @@ export default {
               message: "已取消删除"
             });
           });
+    },
+    //编辑
+    handleEdit(index,row){
+        this.formname=this.tableData[index]
     }
   },
 };

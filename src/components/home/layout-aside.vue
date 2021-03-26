@@ -1,5 +1,5 @@
 <template>
-<div style="height:0 auto">
+<div style="height:0 auto" class="aaa">
   <div class="span">后台管理</div>
       <el-row>
         <el-menu router index="1" style=" transition:all 0.3s; min-height:91vh;"
@@ -19,13 +19,13 @@
           <el-submenu index="3">
             <template slot="title">
               <i class="el-icon-s-platform"></i>
-              <span>日常办公</span>
+              <span>我的商品</span>
             </template>
-            <el-menu-item  index="/home/worklog">工作日志</el-menu-item>
-            <el-menu-item index="/home/myworklog">我的工作日志</el-menu-item>
-            <el-menu-item index="/home/task">定制任务</el-menu-item>
-            <el-menu-item index="/home/mytask">我的任务</el-menu-item>
-            <el-menu-item index="/home/schedule">日程管理</el-menu-item>
+            <el-menu-item  index="/home/worklog">商品列表</el-menu-item>
+            <el-menu-item index="/home/myworklog">商品添加</el-menu-item>
+            <el-menu-item index="/home/task">商品分类</el-menu-item>
+            <el-menu-item index="/home/mytask">商品类型</el-menu-item>
+            <el-menu-item index="/home/schedule">品牌管理</el-menu-item>
           </el-submenu>
 
           <el-submenu index="4">
@@ -89,6 +89,9 @@ export default {
     height: 63px;
     line-height: 63px;
     background-color: #545C64;
-    width: 299px;
+    width: 208px;
+}
+.aaa{
+  width: 209px ! important;
 }
 </style>

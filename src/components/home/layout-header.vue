@@ -48,6 +48,7 @@ export default {
 .header {
   height: 50px;
   background-color: #3c8dbc;
+  margin-left:-95px;
 }
 .header .left {
   float: left;
